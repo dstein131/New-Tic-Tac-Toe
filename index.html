@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link href="style.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Palette+Mosaic&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="hidder">
+    <div id="startScreenWrapper">
+        <div id="firstPlayer" class="inputWrapper">
+            <span>Player 1:</span>
+            <input type="text" id="firstName">
+        </div>
+        <div id="secondPlayer" class="inputWrapper">
+            <span>Player 2:</span>
+            <input type="text" id="secondName">
+        </div>
+    </div>
+    <div id="startWrapper">
+        <button id ="start" class="restart" onclick="start()">Start</button>
+    </div>
+    </div>
+   <div id="mainWrapper">
+       <h1 class="headline">Tic Tac Toe</h1>
+       <div id="gameContainer">
+            <div id="0" class="cell"></div>
+            <div id="1" class="cell"></div>
+            <div id="2" class="cell"></div>
+            <div id="3" class="cell"></div>
+            <div id="4" class="cell"></div>
+            <div id="5" class="cell"></div>
+            <div id="6" class="cell"></div>
+            <div id="7" class="cell"></div>
+            <div id="8" class="cell"></div>   
+       </div>
+       <h2 id="statusBar"></h2>
+       <button class="restart" onclick="reset()">Restart</button>
+   </div> 
+</body>
+<script src="script.js"></script>
+</html>
