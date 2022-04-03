@@ -56,7 +56,9 @@ function clicked(e) {
     markBox(e)
     checkIfWin()
     checkDrawChecker()
-    // checkDraw()
+    if (isComputer) {
+        pickCell()
+    }
     
 }
 
@@ -219,5 +221,7 @@ function pickCell() {
     ranDom.innerText = currentTurn
     board[randomElement] = currentTurn
     moves++
+    swapName()
+    swapTurn()
     
 }
