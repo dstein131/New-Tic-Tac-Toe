@@ -81,5 +81,5 @@ function swapName() {
     else {
         currentName = playerNames[0]
     }
-    console.log(currentName)
+    statusBar.innerText = `It's ${currentName}'s turn`
 }
