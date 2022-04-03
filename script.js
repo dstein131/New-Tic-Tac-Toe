@@ -2,7 +2,7 @@ const gameState = {
     players: ['X', 'O'],
     currentTurn: [],
     playerName: ["", ""],
-    currentName: [], // this is returning null check into it later
+    currentName: [""], // this is returning null check into it later
     moves: [0],
     gameBoard: Array(9).fill(null),
     isComputer: ["Yes", "No"],
@@ -27,7 +27,10 @@ function start() {
     currentTurn = gameState.players[0]
     getNames()
     randomlyChooseName()
-    isComputer()
+    console.log(currentName)
+    if (isComputer() && currentName === "Computer") {
+        pickCell()
+    }
     
 }
 
@@ -56,7 +59,7 @@ function clicked(e) {
     markBox(e)
     checkIfWin()
     checkDrawChecker()
-    if (isComputer) {
+    if (isComputer() && !checkWin() && !checkDraw()) {
         pickCell()
     }
     
