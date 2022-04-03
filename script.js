@@ -3,6 +3,7 @@ const gameState = {
     currentTurn: [],
     playerName: ["", ""],
     currentName: [],
+    moves: [0],
     gameBoard: Array(9).fill(null)
 }
 
@@ -11,6 +12,7 @@ var gameBoard = gameState.gameBoard
 var currentTurn = gameState.currentTurn
 var currentName = gameState.currentName
 var playerNames = gameState.playerName
+var moves = gameState.moves
 var statusBar = document.getElementById("statusBar")
 
 function start() {
@@ -45,8 +47,9 @@ function randomlyChooseName() {
 function clicked(e) {
     markBox(e)
     checkIfWin()
-    swapTurn()
-    swapName()
+    checkDrawChecker()
+    // checkDraw()
+    
 }
 
 function markBox(e) {
@@ -56,10 +59,11 @@ function markBox(e) {
     if (!checkWin()) {
         if (inner === "") {
             target.innerText = currentTurn
-            gameBoard[marker] = currentTurn   
-            console.log(gameBoard) 
-            console.log(currentName)
-            console.log(currentTurn)
+            gameBoard[marker] = currentTurn
+            moves++ 
+            console.log(moves)  
+            swapTurn()
+            swapName()
         } 
     }  
 }
@@ -124,13 +128,18 @@ function checkIfWin() {
 }
 
 
-// function checkDraw() {
-//     for (i = 0; i < gameBoard.length; i++) {
-//         if (gameBoard[i] === null) {
-//             return(false)
-//         }
-//         else {
-//             statusBar.innerText = `It's a draw between ${gameState.playerName[0]} & ${gameState.playerName[1]}`
-//         }
-//     }
-// }
+function checkDraw() {
+    if (moves === 9) {
+        return(true)
+    } else {
+        return(false)
+    }
+}
+     
+function checkDrawChecker() {
+    if (!checkWin()) {
+        if (checkDraw()) {
+            statusBar.innerText = "It's a draw!"
+        }
+    }
+}
