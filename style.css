@@ -52,6 +52,10 @@
     box-shadow: rgb(242, 107, 63) 0px 6px 24px 0px, rgb(242, 107, 63) 0px 0px 0px 1px;
 }
 
+.restart:last-child {
+    margin-top: 15px;
+}
+
 #startScreenWrapper {
     display: flex;
     flex-direction: row;

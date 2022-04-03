@@ -23,8 +23,6 @@ function start() {
     currentTurn = gameState.players[0]
     getNames()
     randomlyChooseName()
-    checkIfPlayerIsComputer()
-    console.log(checkIfPlayerIsComputer())
     document.querySelectorAll('.cell').forEach(item => item.addEventListener('click', clicked))
 }
 
@@ -50,7 +48,7 @@ function clicked(e) {
     markBox(e)
     checkIfWin()
     checkDrawChecker()
-    compMove()
+    // checkDraw()
     
 }
 
@@ -63,6 +61,7 @@ function markBox(e) {
             target.innerText = currentTurn
             gameBoard[marker] = currentTurn
             moves++ 
+            console.log(moves)  
             swapTurn()
             swapName()
         } 
@@ -159,27 +158,15 @@ function reset() {
 
 }
 
-/// AI ////////////////
+function changePlayers() {
+    gameBoard = Array(9).fill(null)
+    currentTurn = gameState.players[0]
+    moves = 0
+    var wrap = document.getElementById("mainWrapper")
+    var clear = document.getElementById("hidder")
+    clear.style.display = "block"
+    wrap.style.display = "none"
+    document.getElementById("firstName").value = ""
+    document.getElementById("secondName").value = ""
 
-function compMove() {
-    let moves = []
-    let board = gameState.gameBoard
-    for (i = 0; i < board.length; i++) {
-        if (board[i] === null) {
-            moves.push(i)
-        }
-    }
-    randomElement = moves[Math.floor(Math.random() * moves.length)]
-
-    console.log(moves)
-    console.log(randomElement)
-}
-
-function checkIfPlayerIsComputer () {
-    if (playerNames[1] === "Computer") {
-        return(true)
-    }
-    else {
-        return(false)
-    }
 }
