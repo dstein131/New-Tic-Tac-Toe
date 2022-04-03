@@ -15,7 +15,7 @@
 }
 
 #hidder {
-    display: block;
+    display: none;
 }
 
 #gameContainer {
@@ -50,6 +50,8 @@
     /* border: 1px solid rgb(242, 107, 63);
     box-shadow: rgb(242, 107, 63) 0px 8px 8px; */
     box-shadow: rgb(242, 107, 63) 0px 6px 24px 0px, rgb(242, 107, 63) 0px 0px 0px 1px;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .restart:last-child {
@@ -74,3 +76,19 @@
     margin-bottom: 20px;
 }
 
+#startScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#startScreen h2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#startScreen button:first-child {
+    margin-right: 20px;
+    
+}

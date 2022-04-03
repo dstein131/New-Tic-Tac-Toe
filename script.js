@@ -2,9 +2,11 @@ const gameState = {
     players: ['X', 'O'],
     currentTurn: [],
     playerName: ["", ""],
-    currentName: [],
+    currentName: [], // this is returning null check into it later
     moves: [0],
-    gameBoard: Array(9).fill(null)
+    gameBoard: Array(9).fill(null),
+    isComputer: ["Yes", "No"],
+    computerState: [""]
 }
 
 var players = gameState.players
@@ -162,11 +164,25 @@ function changePlayers() {
     gameBoard = Array(9).fill(null)
     currentTurn = gameState.players[0]
     moves = 0
+    document.querySelectorAll('.cell').forEach(item => item.innerText = "")
     var wrap = document.getElementById("mainWrapper")
-    var clear = document.getElementById("hidder")
-    clear.style.display = "block"
+    // var clear = document.getElementById("hidder")
+    // clear.style.display = "block"
     wrap.style.display = "none"
+    document.getElementById("startScreen").style.display = "flex"
     document.getElementById("firstName").value = ""
     document.getElementById("secondName").value = ""
 
+}
+
+function onePlayer() {
+    document.getElementById("startScreen").style.display = "none"
+    document.getElementById("hidder").style.display = "block"
+    document.getElementById("secondPlayer").style.display = "none"
+}
+
+function twoPlayer() {
+    document.getElementById("startScreen").style.display = "none"
+    document.getElementById("hidder").style.display = "block"
+    document.getElementById("secondPlayer").style.display = "flex"
 }
