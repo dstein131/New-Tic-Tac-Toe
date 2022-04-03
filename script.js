@@ -28,7 +28,7 @@ function start() {
     getNames()
     randomlyChooseName()
     if (isComputer() && currentName === "Computer") {
-        pickCell()
+        computerWait()
     }
     
 }
@@ -58,7 +58,7 @@ function clicked(e) {
     checkIfWin()
     checkDrawChecker()
     if (isComputer() && !checkWin() && !checkDraw()) {
-        pickCell()
+        computerWait()
     }
     
 }
@@ -162,6 +162,9 @@ function reset() {
     statusBar.innerText = `It's ${currentName}'s turn`
     currentTurn = gameState.players[0]
     moves = 0
+    if (isComputer() && currentName === "Computer") {
+        computerWait()
+    }
 }
 
 function changePlayers() {
@@ -222,5 +225,9 @@ function pickCell() {
     checkDrawChecker()
     swapName()
     swapTurn()
-    
 }
+
+async function computerWait() {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    pickCell()
+  }
