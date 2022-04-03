@@ -1,14 +1,16 @@
-const gameState = {
+gameState = {
     players: ['X', 'O'],
-    currentTurn: [],
+    currentTurn: [""],
     playerName: ["", ""],
     currentName: [""], // this is returning null check into it later
-    moves: [0],
+    moves: [],
     gameBoard: Array(9).fill(null),
     isComputer: ["Yes", "No"],
     computerState: [""]
 }
 
+
+const arr = new Array(9).fill(null)
 var computerState = gameState.computerState
 var players = gameState.players
 var gameBoard = gameState.gameBoard
@@ -17,6 +19,7 @@ var currentName = gameState.currentName
 var playerNames = gameState.playerName
 var moves = gameState.moves
 var statusBar = document.getElementById("statusBar")
+console.log(gameBoard)
 
 function start() {
     document.querySelectorAll('.cell').forEach(item => item.addEventListener('click', clicked))
@@ -54,6 +57,9 @@ function randomlyChooseName() {
 }
 
 function clicked(e) {
+    if (currentName == "Computer") {
+        return
+    }
     markBox(e)
     checkIfWin()
     checkDrawChecker()
@@ -137,7 +143,6 @@ function checkIfWin() {
     }
 }
 
-
 function checkDraw() {
     if (moves === 9) {
         return(true)
@@ -153,18 +158,20 @@ function checkDrawChecker() {
         }
     }
 }
-
+// this is not reseting
 function reset() {
-    gameBoard = Array(9).fill(null)
     document.querySelectorAll('.cell').forEach(item => item.innerText = "")
+    moves = 0
+    gameBoard = [... new Array(9).fill(null)]
     getNames()
     randomlyChooseName()
     statusBar.innerText = `It's ${currentName}'s turn`
     currentTurn = gameState.players[0]
-    moves = 0
     if (isComputer() && currentName === "Computer") {
         computerWait()
     }
+    console.log(gameBoard)
+    console.log(moves)
 }
 
 function changePlayers() {
@@ -173,8 +180,6 @@ function changePlayers() {
     moves = 0
     document.querySelectorAll('.cell').forEach(item => item.innerText = "")
     var wrap = document.getElementById("mainWrapper")
-    // var clear = document.getElementById("hidder")
-    // clear.style.display = "block"
     wrap.style.display = "none"
     document.getElementById("startScreen").style.display = "flex"
     document.getElementById("firstName").value = ""
