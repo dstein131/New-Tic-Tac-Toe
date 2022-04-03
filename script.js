@@ -203,3 +203,20 @@ function isComputer() {
         return(false)
     }
 }
+
+function pickCell() {
+    let computerMoves = []
+    let board = gameState.gameBoard
+    let problem = gameState.currentTurn
+    if (!checkWin() && !checkDraw())
+    for (i = 0; i < board.length; i++) {
+        if (board[i] === null) {
+            computerMoves.push(i)
+        }
+    }
+    randomElement = computerMoves[Math.floor(Math.random() * computerMoves.length)]
+    var ranDom = document.getElementById(randomElement)
+    ranDom.innerText = currentTurn
+    board[randomElement] = currentTurn
+    
+}
