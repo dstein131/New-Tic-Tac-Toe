@@ -22,7 +22,6 @@ function start() {
     getNames()
     randomlyChooseName()
     document.querySelectorAll('.cell').forEach(item => item.addEventListener('click', clicked))
-    console.log(currentTurn)
 }
 
 function getNames() {
@@ -39,47 +38,91 @@ function getNames() {
 
 function randomlyChooseName() {
     const randomElement = gameState.playerName[Math.floor(Math.random() * gameState.playerName.length)];
-    console.log(randomElement)
     currentName = randomElement
-    console.log (currentName)
     statusBar.innerText = `It's ${currentName}'s turn`
 }
 
 function clicked(e) {
     markBox(e)
+   
 }
 
 function markBox(e) {
     let target = e.target
     let marker = e.target.id
     let inner = e.target.innerText
-    if (inner === "") {
-        target.innerText = currentTurn
-        gameBoard[marker] = currentTurn   
-        console.log(gameBoard)
-        swapName()
-        swapTurn()
-    }    
+    if (!checkWin()) {
+        if (inner === "") {
+            target.innerText = currentTurn
+            gameBoard[marker] = currentTurn   
+            console.log(gameBoard) 
+            swapTurn()
+            swapName()
+            console.log(currentName)
+            console.log(currentTurn)
+        } 
+    }   
 }
 
-
-
 function swapTurn() {
-    if (currentTurn === players[0]) {
-        currentTurn = players[1]
+    if (!checkWin()) {
+        if (currentTurn === players[0]) {
+            currentTurn = players[1]
+        }
+        else {
+            currentTurn = players[0]
+        }
     }
-    else {
-        currentTurn = players[0]
-    }
-    console.log(currentTurn)
 }
 
 function swapName() {
-    if (currentName === playerNames[0]) {
-        currentName = playerNames[1]
+    if (!checkWin()) {
+        if (currentName === playerNames[0]) {
+            currentName = playerNames[1]
+        }
+        else {
+            currentName = playerNames[0]
+        }
+        statusBar.innerText = `It's ${currentName}'s turn`
+    }
+}
+
+function checkWin() {
+    if (gameBoard[0] === currentTurn && gameBoard[1] === currentTurn && gameBoard[2] === currentTurn) {
+        statusBar.innerText = `${currentName} has won!`
+        return(true)
+        
+    }
+    if (gameBoard[3] === currentTurn && gameBoard[4] === currentTurn && gameBoard[5] === currentTurn) {
+        statusBar.innerText = `${currentName} has won!`
+        return(true)
+    }
+    if (gameBoard[6] === currentTurn && gameBoard[7] === currentTurn && gameBoard[8] === currentTurn) {
+        statusBar.innerText = `${currentName} has won!`
+        return(true)
+    }
+    if (gameBoard[0] === currentTurn && gameBoard[3] === currentTurn && gameBoard[6] === currentTurn) {
+        statusBar.innerText = `${currentName} has won!`
+        return(true)
+    }
+    if (gameBoard[1] === currentTurn && gameBoard[4] === currentTurn && gameBoard[7] === currentTurn) {
+        statusBar.innerText = `${currentName} has won!`
+        return(true)
+    }
+    if (gameBoard[2] === currentTurn && gameBoard[5] === currentTurn && gameBoard[8] === currentTurn) {
+        statusBar.innerText = `${currentName} has won!`
+        return(true)
+    }
+    if (gameBoard[0] === currentTurn && gameBoard[4] === currentTurn && gameBoard[8] === currentTurn) {  
+        statusBar.innerText = `${currentName} has won!`
+        return(true)
+    }
+    if (gameBoard[6] === currentTurn && gameBoard[4] === currentTurn && gameBoard[2] === currentTurn) {
+        statusBar.innerText = `${currentName} has won!`
+        return(true)
     }
     else {
-        currentName = playerNames[0]
+        return(false)
     }
-    statusBar.innerText = `It's ${currentName}'s turn`
+
 }
