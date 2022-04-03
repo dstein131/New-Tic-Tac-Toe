@@ -218,5 +218,6 @@ function pickCell() {
     var ranDom = document.getElementById(randomElement)
     ranDom.innerText = currentTurn
     board[randomElement] = currentTurn
+    moves++
     
 }
