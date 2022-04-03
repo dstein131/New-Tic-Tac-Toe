@@ -44,7 +44,6 @@ function randomlyChooseName() {
 
 function clicked(e) {
     markBox(e)
-   
 }
 
 function markBox(e) {
@@ -90,8 +89,7 @@ function swapName() {
 function checkWin() {
     if (gameBoard[0] === currentTurn && gameBoard[1] === currentTurn && gameBoard[2] === currentTurn) {
         statusBar.innerText = `${currentName} has won!`
-        return(true)
-        
+        return(true)  
     }
     if (gameBoard[3] === currentTurn && gameBoard[4] === currentTurn && gameBoard[5] === currentTurn) {
         statusBar.innerText = `${currentName} has won!`
