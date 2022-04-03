@@ -9,6 +9,7 @@ const gameState = {
     computerState: [""]
 }
 
+var computerState = gameState.computerState
 var players = gameState.players
 var gameBoard = gameState.gameBoard
 var currentTurn = gameState.currentTurn
@@ -18,6 +19,7 @@ var moves = gameState.moves
 var statusBar = document.getElementById("statusBar")
 
 function start() {
+    document.querySelectorAll('.cell').forEach(item => item.addEventListener('click', clicked))
     var wrap = document.getElementById("mainWrapper")
     var clear = document.getElementById("hidder")
     clear.style.display = "none"
@@ -25,7 +27,8 @@ function start() {
     currentTurn = gameState.players[0]
     getNames()
     randomlyChooseName()
-    document.querySelectorAll('.cell').forEach(item => item.addEventListener('click', clicked))
+    isComputer()
+    
 }
 
 function getNames() {
@@ -34,10 +37,13 @@ function getNames() {
     gameState.playerName[0] = first.value
     if (second.value === "") {
         gameState.playerName[1] = "Computer"
+        gameState.computerState = "Yes"
     }
     else {
         gameState.playerName[1] = second.value
+        gameState.computerState = "No"
     }
+    console.log(gameState.computerState)
 }
 
 function randomlyChooseName() {
@@ -185,4 +191,15 @@ function twoPlayer() {
     document.getElementById("startScreen").style.display = "none"
     document.getElementById("hidder").style.display = "block"
     document.getElementById("secondPlayer").style.display = "flex"
+}
+
+function isComputer() {
+    if (gameState.computerState === "Yes") {
+        console.log("true")
+        return(true)
+    } 
+    else {
+        console.log("false")
+        return(false)
+    }
 }
