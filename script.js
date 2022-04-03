@@ -27,7 +27,6 @@ function start() {
     currentTurn = gameState.players[0]
     getNames()
     randomlyChooseName()
-    console.log(currentName)
     if (isComputer() && currentName === "Computer") {
         pickCell()
     }
@@ -46,7 +45,6 @@ function getNames() {
         gameState.playerName[1] = second.value
         gameState.computerState = "No"
     }
-    console.log(gameState.computerState)
 }
 
 function randomlyChooseName() {
@@ -74,7 +72,6 @@ function markBox(e) {
             target.innerText = currentTurn
             gameBoard[marker] = currentTurn
             moves++ 
-            console.log(moves)  
             swapTurn()
             swapName()
         } 
@@ -158,17 +155,13 @@ function checkDrawChecker() {
 }
 
 function reset() {
-    console.log(moves)
     gameBoard = Array(9).fill(null)
     document.querySelectorAll('.cell').forEach(item => item.innerText = "")
+    getNames()
     randomlyChooseName()
     statusBar.innerText = `It's ${currentName}'s turn`
     currentTurn = gameState.players[0]
     moves = 0
-    console.log(currentTurn)
-    console.log(gameBoard)
-    console.log(moves)
-
 }
 
 function changePlayers() {
@@ -221,9 +214,12 @@ function pickCell() {
     }
     randomElement = computerMoves[Math.floor(Math.random() * computerMoves.length)]
     var ranDom = document.getElementById(randomElement)
+    console.log(currentTurn)
     ranDom.innerText = currentTurn
     board[randomElement] = currentTurn
     moves++
+    checkIfWin()
+    checkDrawChecker()
     swapName()
     swapTurn()
     
