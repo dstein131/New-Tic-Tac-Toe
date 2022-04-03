@@ -44,6 +44,9 @@ function randomlyChooseName() {
 
 function clicked(e) {
     markBox(e)
+    checkIfWin()
+    swapTurn()
+    swapName()
 }
 
 function markBox(e) {
@@ -55,12 +58,10 @@ function markBox(e) {
             target.innerText = currentTurn
             gameBoard[marker] = currentTurn   
             console.log(gameBoard) 
-            swapTurn()
-            swapName()
             console.log(currentName)
             console.log(currentTurn)
         } 
-    }   
+    }  
 }
 
 function swapTurn() {
@@ -88,39 +89,48 @@ function swapName() {
 
 function checkWin() {
     if (gameBoard[0] === currentTurn && gameBoard[1] === currentTurn && gameBoard[2] === currentTurn) {
-        statusBar.innerText = `${currentName} has won!`
         return(true)  
     }
     if (gameBoard[3] === currentTurn && gameBoard[4] === currentTurn && gameBoard[5] === currentTurn) {
-        statusBar.innerText = `${currentName} has won!`
         return(true)
     }
     if (gameBoard[6] === currentTurn && gameBoard[7] === currentTurn && gameBoard[8] === currentTurn) {
-        statusBar.innerText = `${currentName} has won!`
         return(true)
     }
     if (gameBoard[0] === currentTurn && gameBoard[3] === currentTurn && gameBoard[6] === currentTurn) {
-        statusBar.innerText = `${currentName} has won!`
         return(true)
     }
     if (gameBoard[1] === currentTurn && gameBoard[4] === currentTurn && gameBoard[7] === currentTurn) {
-        statusBar.innerText = `${currentName} has won!`
         return(true)
     }
     if (gameBoard[2] === currentTurn && gameBoard[5] === currentTurn && gameBoard[8] === currentTurn) {
-        statusBar.innerText = `${currentName} has won!`
         return(true)
     }
     if (gameBoard[0] === currentTurn && gameBoard[4] === currentTurn && gameBoard[8] === currentTurn) {  
-        statusBar.innerText = `${currentName} has won!`
         return(true)
     }
     if (gameBoard[6] === currentTurn && gameBoard[4] === currentTurn && gameBoard[2] === currentTurn) {
-        statusBar.innerText = `${currentName} has won!`
         return(true)
     }
     else {
         return(false)
     }
-
 }
+
+function checkIfWin() {
+    if (checkWin()) {
+        statusBar.innerHTML = `${currentName} has won!`
+    }
+}
+
+
+// function checkDraw() {
+//     for (i = 0; i < gameBoard.length; i++) {
+//         if (gameBoard[i] === null) {
+//             return(false)
+//         }
+//         else {
+//             statusBar.innerText = `It's a draw between ${gameState.playerName[0]} & ${gameState.playerName[1]}`
+//         }
+//     }
+// }
