@@ -145,12 +145,15 @@ function checkDrawChecker() {
 }
 
 function reset() {
-    gameState.gameBoard = Array(9).fill(null)
+    console.log(moves)
+    gameBoard = Array(9).fill(null)
     document.querySelectorAll('.cell').forEach(item => item.innerText = "")
     randomlyChooseName()
     statusBar.innerText = `It's ${currentName}'s turn`
     currentTurn = gameState.players[0]
-    turns = 0
+    moves = 0
     console.log(currentTurn)
+    console.log(gameBoard)
+    console.log(moves)
 
 }
