@@ -24,7 +24,7 @@
     width: 302px;
     margin: 40px;
     border: 1px solid rgb(242, 107, 63);
-    box-shadow: rgb(242, 107, 63) 0px 8px 24px;
+    box-shadow: #f26b3f 0px 8px 24px;
     /* border-radius: 5px; */
 }
 
@@ -104,3 +104,8 @@ h2 {
 
 }
 
+@media only screen and (max-width: 600px) {
+    .inputWrapper {
+        margin: 15px;
+    }
+}
