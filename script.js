@@ -4,7 +4,7 @@ gameState = {
     playerName: ["", ""],
     currentName: [""], // this is returning null check into it later
     moves: [],
-    gameBoard: Array(9).fill(null),
+    gameBoard: [null, null, null, null, null, null, null, null, null],
     isComputer: ["Yes", "No"],
     computerState: [""]
 }
@@ -160,9 +160,10 @@ function checkDrawChecker() {
 }
 // this is not reseting
 function reset() {
-    document.querySelectorAll('.cell').forEach(item => item.innerText = "")
+    clearBoard()
     moves = 0
-    gameBoard = [... new Array(9).fill(null)]
+    document.querySelectorAll('.cell').forEach(item => item.innerText = "")
+    delete gameState.gameBoard
     getNames()
     randomlyChooseName()
     statusBar.innerText = `It's ${currentName}'s turn`
@@ -212,7 +213,7 @@ function isComputer() {
 
 function pickCell() {
     let computerMoves = []
-    let board = gameState.gameBoard
+    let board = gameBoard
     let problem = gameState.currentTurn
     if (!checkWin() && !checkDraw())
     for (i = 0; i < board.length; i++) {
@@ -236,3 +237,10 @@ async function computerWait() {
     await new Promise(resolve => setTimeout(resolve, 1000));
     pickCell()
   }
+
+function clearBoard() {
+    console.log(gameBoard)
+    for (i = 0; i < gameBoard.length; i++) {
+        gameBoard[i] = null
+    }
+}
