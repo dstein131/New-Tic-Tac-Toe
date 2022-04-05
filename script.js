@@ -27,6 +27,7 @@ function start() {
     wrap.style.display = "flex"
     currentTurn = gameState.players[0]
     getNames()
+    checkNoName()
     randomlyChooseName()
     if (isComputer() && currentName === "Computer") {
         computerWait()
@@ -47,6 +48,16 @@ function getNames() {
         gameState.computerState = "No"
     }
 }
+
+function checkNoName() {
+    if (gameState.playerName[0] === "") {
+        gameState.playerName[0] = "Player 1"
+    }
+    else {
+        return
+    }
+}
+
 
 function randomlyChooseName() {
     const randomElement = gameState.playerName[Math.floor(Math.random() * gameState.playerName.length)];
