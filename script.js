@@ -242,6 +242,7 @@ function pickCell() {
     swapTurn()
 }
 
+
 async function computerWait() {
     await new Promise(resolve => setTimeout(resolve, 800));
     pickCell()
