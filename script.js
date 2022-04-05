@@ -194,7 +194,7 @@ function onePlayer() {
 function twoPlayer() {
     document.getElementById("startScreen").style.display = "none"
     document.getElementById("hidder").style.display = "block"
-    document.getElementById("secondPlayer").style.display = "flex"
+    document.getElementById("secondPlayer").style.display = "inline"
 }
 
 function isComputer() {
