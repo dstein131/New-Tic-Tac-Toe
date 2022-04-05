@@ -173,6 +173,7 @@ function reset() {
     moves = 0
     document.querySelectorAll('.cell').forEach(item => item.innerText = "")
     getNames()
+    checkNoName()
     randomlyChooseName()
     statusBar.innerText = `It's ${currentName}'s turn`
     currentTurn = gameState.players[0]
