@@ -17,7 +17,7 @@ var currentName = gameState.currentName
 var playerNames = gameState.playerName
 var moves = gameState.moves
 var statusBar = document.getElementById("statusBar")
-console.log(gameBoard)
+console.log(`the gameboard is: ${gameBoard}`)
 
 function start() {
     document.querySelectorAll('.cell').forEach(item => item.addEventListener('click', clicked))
@@ -101,6 +101,7 @@ function swapTurn() {
         else {
             currentTurn = players[0]
         }
+        console.log(`the current turn is player: "${currentTurn}"`)
     }
 }
 
@@ -180,8 +181,8 @@ function reset() {
     if (isComputer() && currentName === "Computer") {
         computerWait()
     }
-    console.log(gameBoard)
-    console.log(moves)
+    console.log(`the gameboard is: ${gameBoard}`)
+    console.log(`this many moves: ${moves}`)
 }
 
 function changePlayers() {
@@ -193,7 +194,8 @@ function changePlayers() {
     document.getElementById("startScreen").style.display = "flex"
     document.getElementById("firstName").value = ""
     document.getElementById("secondName").value = ""
-    console.log(gameBoard)
+    console.log(`the gameboard is: ${gameBoard}`)
+    console.log(`this many moves: ${moves}`)
 
 }
 
@@ -211,7 +213,7 @@ function twoPlayer() {
 
 function isComputer() {
     if (gameState.computerState === "Yes") {
-        console.log("true")
+        console.log("Computer Move")
         return(true)
     } 
     else {
@@ -232,7 +234,7 @@ function pickCell() {
     }
     randomElement = computerMoves[Math.floor(Math.random() * computerMoves.length)]
     var ranDom = document.getElementById(randomElement)
-    console.log(currentTurn)
+    console.log(`the current turn is player: "${currentTurn}"`)
     ranDom.innerText = currentTurn
     board[randomElement] = currentTurn
     moves++
@@ -240,6 +242,8 @@ function pickCell() {
     checkDrawChecker()
     swapName()
     swapTurn()
+    console.log(`the gameboard is: ${gameBoard}`)
+    console.log(`this many moves: ${moves}`)
 }
 
 
