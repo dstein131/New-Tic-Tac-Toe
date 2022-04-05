@@ -9,8 +9,6 @@ gameState = {
     computerState: [""]
 }
 
-
-const arr = new Array(9).fill(null)
 var computerState = gameState.computerState
 var players = gameState.players
 var gameBoard = gameState.gameBoard
@@ -163,7 +161,6 @@ function reset() {
     clearBoard()
     moves = 0
     document.querySelectorAll('.cell').forEach(item => item.innerText = "")
-    delete gameState.gameBoard
     getNames()
     randomlyChooseName()
     statusBar.innerText = `It's ${currentName}'s turn`
@@ -176,8 +173,7 @@ function reset() {
 }
 
 function changePlayers() {
-    gameBoard = Array(9).fill(null)
-    currentTurn = gameState.players[0]
+    clearBoard()
     moves = 0
     document.querySelectorAll('.cell').forEach(item => item.innerText = "")
     var wrap = document.getElementById("mainWrapper")
@@ -185,6 +181,7 @@ function changePlayers() {
     document.getElementById("startScreen").style.display = "flex"
     document.getElementById("firstName").value = ""
     document.getElementById("secondName").value = ""
+    console.log(gameBoard)
 
 }
 
@@ -243,4 +240,5 @@ function clearBoard() {
     for (i = 0; i < gameBoard.length; i++) {
         gameBoard[i] = null
     }
+    
 }
