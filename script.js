@@ -66,7 +66,7 @@ function randomlyChooseName() {
 }
 
 function clicked(e) {
-    if (currentName == "Computer") {
+    if (currentName === "Computer") {
         return
     }
     markBox(e)
